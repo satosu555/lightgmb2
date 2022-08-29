@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta charset="utf-8">
+<title>回帰分析を行う</title>
+<link rel="stylesheet" href="/static/style.css">
+{% endblock %}
+
+{% block body %}
+<h4>データのサイズ</h4>
+<h5>訓練</h5>
+<p>
+    {{ train_size }} 行
+</p>
+
+<h5>テスト</h5>
+<p>
+    {{ test_size }} 行
+</p>
+
+<h4>回帰分析の手法を選択</h4>
+<p>LightGBM</p>
+<div class="lightgbm">
+    <form method="POST" action="/lightgbm" enctype="multipart/form-data">
+        <button>OK</button>
+    </form>
+</div>
+
+<p>XGboost</p>
+<div class="xgboost">
+    <form method="POST" action="/xgboost" enctype="multipart/form-data">
+        <button>OK</button>
+    </form>
+</div>
+
+{% endblock %}

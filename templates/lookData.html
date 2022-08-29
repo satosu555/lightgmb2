@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DataFrameをブラウザ上に表示させる</title>
+<link rel="stylesheet" href="/static/style.css">
+{% endblock %}
+
+{% block body %}
+<div class="top5rows">
+    <table align="left">
+        <caption>最初の5行を表示</caption>
+        <thead>
+            <tr>
+                {% for i in header: %}
+                <th scope="col">{{ i }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 5行のみ表示 -->
+            {% for i in range(0, 5) %}
+            <tr>
+                {% for j in record[i] %}
+                <td>{{ j }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="descr">
+    <table align="left">
+        <caption>データの要約を表示</caption>
+        <thead>
+            <tr>
+                {% for k in header_desc: %}
+                <th scope="col">{{ k }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for l in record_desc: %}
+            <tr>
+                {% for m in l %}
+                <td>{{ m }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="confirmation">
+    <p>データには問題はありませんか？</p>
+    <form method="POST" action="/regression" enctype="multipart/form-data">
+        <button>OK</button>
+    </form>
+</div>
+
+{% endblock %}

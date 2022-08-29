@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>データをアップロードする</title>
+<link rel="stylesheet" href="/static/style.css">
+{% endblock %}
+
+{% block body %}
+<p>ファイルアップロード</p>
+<form action="/fileUpLoad" method="POST" enctype="multipart/form-data">
+    <input type="file" name="send_data">
+    <input type="submit" value="アップロード">
+</form>
+{% endblock %}
